@@ -1,6 +1,6 @@
 # HW-4_Web-Code-Quiz
 
-This application is a timed code quiz with multiple-choice questions. This app will runs in the browser and features dynamically updated HTML and CSS powered by my JavaScript code.
+This application is a timed code quiz with multiple-choice questions. This app runs in the browser and features dynamically updated HTML and CSS powered by my JavaScript code.
 Check it out: 
 
 

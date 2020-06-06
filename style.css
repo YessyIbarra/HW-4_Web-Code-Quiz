@@ -1,0 +1,26 @@
+
+html {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #startButton{
+    border-radius: 4px;
+    border-style: none;
+    box-shadow: rgba(34,36,38,.15) 0 0 0 0 inset;
+    color:white;
+    cursor: pointer;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 0;
+    padding: 20px;
+  }
+  
+  #startButton {
+    background-color:hsla(0, 71%, 80%, 0.933);
+  }
+  
+  #startbutton:hover {
+    background-color:black;
+  }
