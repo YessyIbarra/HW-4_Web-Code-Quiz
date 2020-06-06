@@ -2,13 +2,17 @@
 let startBtn = document.querySelector("#startButton");
 
 // Adding event listener to have the 'somefunction' run when button is clicked
-startBtn.addEventListener("click", someFunction);
+startBtn.addEventListener("click", startQuizFunction);
 
-function someFunction(){
+
+//When the start button is clicked this function is executed
+function startQuizFunction(){
     console.log("I work!");
+    startBtn.style.display= "none"; //Hide the start button
+    startPTag.style.visibility="hidden"; //Hide the paragraph
 }
 
-//Set - interval will be used in hw
+//Set - interval will be used in hw. I need to add a set interval function here
 
 //Example of how to call data from browser API
 let name = "Yessy";
