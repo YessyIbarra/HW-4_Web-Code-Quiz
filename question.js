@@ -31,9 +31,10 @@ let quizQuestions = [
     question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5",
     option: ["if i=! 5 then", "if i <> 5", "if (i !=5)"],
     answer: "if (i !=5)"
-},
-]
-console.log(quizQuestions)
+}
+];
+
+
 //questionText is linked to a div in HTML.
 //questionIndex is equal to 0
 function load() {
@@ -45,10 +46,31 @@ function load() {
 //Loop to go through each option
 function createOptions(){
   for (let i=0 ; i<quizQuestions[questionIndex].option.length; i++){
-    let option=document.createElement("div");
+    let option=document.createElement("button");
     option.textContent=quizQuestions[questionIndex].option[i];
+    option.setAttribute("data-answer",quizQuestions[questionIndex].option[i])
+    option.onclick= nextQuestion;
     optionBox.appendChild(option);
     console.log(option);
-  }
-  
+  } 
 };
+
+//Info for each of the buttons. When a certain button is 
+
+//deduct time if false
+
+
+
+//evaluate answer 
+function nextQuestion() {
+  let userAnswer = this.getAttribute("data-answer");
+  let correctAnswer = quizQuestions[questionIndex].answer
+  console.log(this.getAttribute("data-answer"),quizQuestions[questionIndex].answer) //need to get data attribute from what was clicked and evaluate if it was the right answer or not
+  //questionIndex=1 to go to next index in the object array. 
+  if (userAnswer == correctAnswer) {
+    console.log("User got it right!");
+  }
+  else {
+    //need to figure out how to go to next question in object array;
+  }
+}
