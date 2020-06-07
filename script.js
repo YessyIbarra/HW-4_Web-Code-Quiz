@@ -10,9 +10,18 @@ function startQuizFunction(){
     console.log("I work!");
     startBtn.style.display= "none"; //Hide the start button
     startPTag.style.visibility="hidden"; //Hide the paragraph
+    load();
 }
 
 //Set - interval will be used in hw. I need to add a set interval function here
+
+//function countdownClock() {}
+
+
+
+
+
+
 
 //Example of how to call data from browser API
 let name = "Yessy";

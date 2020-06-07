@@ -24,3 +24,15 @@ html {
   #startbutton:hover {
     background-color:black;
   }
+
+  #question-text {
+    text-align: center;
+    font-size: larger;
+    font-style: italic;
+  }
+
+  #option-box {
+    text-align: center;
+  }
+
+  
