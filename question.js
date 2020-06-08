@@ -4,7 +4,7 @@ let optionBox =document.querySelector("#option-box");
 let questionIndex=0;
 
 
-//Created a variable = Object array with 5 questions, choices and answers
+//                Created a variable = Object array with 5 questions, choices and answers here
 let quizQuestions = [
   {
     question: "Inside which HTML do we put the JavaScript?",
@@ -68,7 +68,7 @@ function createOptions(){
     let option=document.createElement("button");
     option.textContent=quizQuestions[questionIndex].option[i];
     option.setAttribute("data-answer",quizQuestions[questionIndex].option[i])
-    option.onclick= nextQuestion;
+    option.onclick = nextQuestion;
     optionBox.appendChild(option);
     console.log(option);
   } 
@@ -84,7 +84,7 @@ function nextQuestion() {
   //questionIndex=1 to go to next index in the object array. 
   if (userAnswer == correctAnswer) {
     console.log("User got it right!");
-    correctAnswer();
+    
   }
   else {
     //need to figure out how to go to next question in object array;
@@ -96,8 +96,9 @@ function nextQuestion() {
 //Display 'Correct!' if correct function
 function correctAnswer() {
   let correctAlert = document.createElement("div");
-  correctAlert.Alert.textContent = "Correct!"
-
+  correctAlert.textContent = "Correct!";
+  optionBox.appendChild(correctAlert);
+console.log(correctAnswer);
 };
 
 
