@@ -35,15 +35,34 @@ let quizQuestions = [
 ];
 
 
+
+//                                     STARTINGQUIZ FUNCTION HERE
+// This is where we are capturing the element (in HTML file) so we have refrence to this JS file
+let startBtn = document.querySelector("#startButton");
+
+// Adding event listener to have the 'somefunction' run when button is clicked
+startBtn.addEventListener("click", startQuizFunction);
+
+//When the start button is clicked this function is executed
+function startQuizFunction(){
+    console.log("I work!");
+    startBtn.style.display= "none"; //Hide the start button
+    startPTag.style.visibility="hidden"; //Hide the paragraph
+    load();
+    countdownTime();
+}
+
+
+//                            CREATING QUIZ QUESTIONS & OPTIONS FUNCTION HERE
 //questionText is linked to a div in HTML.
-//questionIndex is equal to 0
+//questionIndex is equal to 0 to start from object array index 1
 function load() {
   questionText.textContent=quizQuestions[questionIndex].question
   createOptions();
 };
 
 
-//Loop to go through each option
+//Loop to go through each question option
 function createOptions(){
   for (let i=0 ; i<quizQuestions[questionIndex].option.length; i++){
     let option=document.createElement("button");
@@ -55,13 +74,9 @@ function createOptions(){
   } 
 };
 
-//Info for each of the buttons. When a certain button is 
-
-//deduct time if false
 
 
-
-//evaluate answer 
+//                        EVALUTAE THE USER'S INPUT HERE THEN MOVE ON TO NEXT QUESTION
 function nextQuestion() {
   let userAnswer = this.getAttribute("data-answer");
   let correctAnswer = quizQuestions[questionIndex].answer
@@ -69,8 +84,57 @@ function nextQuestion() {
   //questionIndex=1 to go to next index in the object array. 
   if (userAnswer == correctAnswer) {
     console.log("User got it right!");
+    correctAnswer();
   }
   else {
     //need to figure out how to go to next question in object array;
   }
 }
+
+
+//                                      DISPLAY "CORRECT!" FUNCTION HERE
+//Display 'Correct!' if correct function
+function correctAnswer() {
+  let correctAlert = document.createElement("div");
+  correctAlert.Alert.textContent = "Correct!"
+
+};
+
+
+//                                      SETTING UP TIME COUNTDOWN HERE
+//Set - interval will be used in hw. I need to add a set interval function here
+let timeOnScreen = document.querySelector("#time-on-screen")
+let numberOfQuestions = quizQuestions.length;
+let time= numberOfQuestions*15;
+
+function countdownTime() {
+  let timerInterval = setInterval(function() {
+    timeOnScreen.textContent = time;
+    time--;
+
+}, 1000)
+
+
+
+//function countdownClock() {}
+
+
+
+
+
+
+
+//Example of how to call data from browser API
+let name = "Yessy";
+
+//store the item in local storage
+localStorage.setItem("name", name);
+
+//retrieve the value we just stored and save to a new variable
+let gottenFromLocalStorage = localStorage.getItem("name");
+
+//console.log to retrieve value
+console.log(gottenFromLocalStorage);
+
+//Open developer tools -> Click on "Application" tab
+};
