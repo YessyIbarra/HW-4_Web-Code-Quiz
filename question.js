@@ -1,7 +1,4 @@
-// This is where we are capturing the element (in HTML file) so we have refrence to it in this JS file
-let questionText = document.querySelector("#question-text");
-let optionBox =document.querySelector("#option-box");
-let questionIndex=0;
+
 
 
 //                Created a variable = Object array with 5 questions, choices and answers here
@@ -52,8 +49,12 @@ function startQuizFunction(){
     countdownTime();
 }
 
-
-//                            CREATING QUIZ QUESTIONS & OPTIONS FUNCTION HERE
+ //                             CREATING QUIZ QUESTIONS & OPTIONS FUNCTION HERE
+// This is where we are capturing the element (in HTML file) so we have refrence to it in this JS file
+let questionText = document.querySelector("#question-text");
+let optionBox =document.querySelector("#option-box");
+let questionIndex=0;
+                           
 //questionText is linked to a div in HTML.
 //questionIndex is equal to 0 to start from object array index 1
 function load() {
@@ -64,6 +65,7 @@ function load() {
 
 //Loop to go through each question option
 function createOptions(){
+  optionBox.innerHTML = "";
   for (let i=0 ; i<quizQuestions[questionIndex].option.length; i++){
     let option=document.createElement("button");
     option.textContent=quizQuestions[questionIndex].option[i];
@@ -84,8 +86,15 @@ function nextQuestion() {
   //questionIndex=1 to go to next index in the object array. 
   if (userAnswer == correctAnswer) {
     console.log("User got it right!");
-    
-  }
+    questionIndex++;
+  if (questionIndex === quizQuestions.length){
+      // RUN FINAL DISPLAY FUNCTION
+    } else {
+
+      load();
+    }
+      
+    }
   else {
     //need to figure out how to go to next question in object array;
   }
