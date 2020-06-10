@@ -88,7 +88,7 @@ function nextQuestion() {
     console.log("User got it right!");
     questionIndex++;
   if (questionIndex === quizQuestions.length){
-      // RUN FINAL DISPLAY FUNCTION
+      // RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
     } else {
 
       load();
