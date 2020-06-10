@@ -1,6 +1,3 @@
-
-
-
 //                Created a variable = Object array with 5 questions, choices and answers here
 let quizQuestions = [
   {
@@ -87,10 +84,12 @@ function nextQuestion() {
   if (userAnswer == correctAnswer) {
     console.log("User got it right!");
     questionIndex++;
-  if (questionIndex === quizQuestions.length){
-      // RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
-    } else {
+    correct();
 
+  if (questionIndex === quizQuestions.length){
+      clearPage();// RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
+    } else {
+      //"WRONG" show up on screen && Go to next question && take time off current time
       load();
     }
       
@@ -100,14 +99,20 @@ function nextQuestion() {
   }
 }
 
+//                                          FUNCTION TO CLEAR PAGE
+function clearPage (){
+  optionBox.innerHTML=" ";
+  questionText.innerHTML=" ";
+}
+
 
 //                                      DISPLAY "CORRECT!" FUNCTION HERE
 //Display 'Correct!' if correct function
-function correctAnswer() {
+function correct() {
   let correctAlert = document.createElement("div");
   correctAlert.textContent = "Correct!";
   optionBox.appendChild(correctAlert);
-console.log(correctAnswer);
+  
 };
 
 
@@ -119,19 +124,19 @@ let time= numberOfQuestions*15;
 
 function countdownTime() {
   let timerInterval = setInterval(function() {
-    timeOnScreen.textContent = time;
+    timeOnScreen.textContent = "TIME: " + time;
     time--;
 
 }, 1000)
 
 
 
-//function countdownClock() {}
 
 
 
 
 
+// Remember JSON converts an Object into a string
 
 
 //Example of how to call data from browser API
