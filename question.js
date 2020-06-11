@@ -86,8 +86,9 @@ function nextQuestion() {
     questionIndex++;
     correct();
 
-  if (questionIndex === quizQuestions.length){
-      clearPage();// RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
+  if (questionIndex === quizQuestions.length){ 
+    clearPage();
+    window.location.href = "score.html" // RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
     } else {
       //"WRONG" show up on screen && Go to next question && take time off current time
       load();
@@ -130,8 +131,10 @@ function countdownTime() {
 }, 1000)
 
 
-
-
+//                                    SETTING UP REMOVE TIME FUNCTION
+function removeTime() {
+time -=15;
+}
 
 
 
