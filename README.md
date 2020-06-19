@@ -2,7 +2,7 @@
 
 This application is a timed code quiz with multiple-choice questions. This app runs in the browser and features dynamically updated HTML and CSS powered by my JavaScript code.
 
-Check it out: https://yessyibarra.github.io/HW-4_Web-Code-Quiz-github.io/ 
+Check it out: https://yessyibarra.github.io/HW-4_Web-Code-Quiz/
 
 ![](quiz.png)
 
