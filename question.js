@@ -39,7 +39,6 @@ startBtn.addEventListener("click", startQuizFunction);
 
 //When the start button is clicked this function is executed
 function startQuizFunction() {
-  console.log("I work!");
   startBtn.style.display = "none"; //Hide the start button
   startPTag.style.visibility = "hidden"; //Hide the paragraph
   load();
@@ -138,6 +137,12 @@ function removeTime() {
   timeOnScreen.textContent = "TIME: " + time;
   time -= 15;
 };
+
+
+function calcScore() {
+  let score = time / 75;
+  console.log(score)
+}
 
   //                                       Enter initals and score here
 
