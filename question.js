@@ -50,13 +50,21 @@ function startQuizFunction() {
 // This is where we are capturing the element (in HTML file) so we have refrence to it in this JS file
 let questionText = document.querySelector("#question-text");
 let optionBox = document.querySelector("#option-box");
+let correctText = document.querySelector("#correct-or-incorrect");
 let questionIndex = 0;
 
-//questionText is linked to a div in HTML.
-//questionIndex is equal to 0 to start from object array index 1
+//If you reach the end of the quiz
+//Clear the page
+//Go to the score html
 function load() {
-  questionText.textContent = quizQuestions[questionIndex].question
-  createOptions();
+  if (questionIndex === quizQuestions.length) {
+    clearPage();
+    window.location.href = "score.html" // RUN FINAL DISPLAY FUNCTION & function that clears out what I had.
+  }
+  else {
+    questionText.textContent = quizQuestions[questionIndex].question
+    createOptions();
+  }
 };
 
 
@@ -79,26 +87,13 @@ function createOptions() {
 function nextQuestion() {
   let userAnswer = this.getAttribute("data-answer");
   let correctAnswer = quizQuestions[questionIndex].answer
-  console.log(this.getAttribute("data-answer"), quizQuestions[questionIndex].answer) //need to get data attribute from what was clicked and evaluate if it was the right answer or not
-
+  //console.log(this.getAttribute("data-answer"), quizQuestions[questionIndex].answer) //need to get data attribute from what was clicked and evaluate if it was the right answer or not
   //questionIndex=1 to go to next index in the object array. 
-  if (userAnswer == correctAnswer) {
-    console.log("User got it right!");
-    questionIndex++;
-    correct(); //This function isnt working
-
-    if (questionIndex === quizQuestions.length) {
-      clearPage();
-      window.location.href = "score.html" // RUN FINAL DISPLAY FUNCTION & function that clears out what I had. 
-    } else {
-      //"WRONG" show up on screen && Go to next question && take time off current time
-      load();
-
-    }
-
-  }
-
+  correct(userAnswer == correctAnswer);
+  questionIndex++;
+  load();
 }
+
 
 //                                          FUNCTION TO CLEAR PAGE
 function clearPage() {
@@ -109,11 +104,18 @@ function clearPage() {
 
 //                                      DISPLAY "CORRECT!" FUNCTION HERE
 //Display 'Correct!' if correct function
-function correct() {
+//Display 'Incorrect" if incorrect answer is chosen
+function correct(isCorrect) {
+  console.log(isCorrect)
   let correctAlert = document.createElement("div");
-  correctAlert.textContent = "Correct!";
-  optionBox.appendChild(correctAlert);
-
+  if (isCorrect) {
+    correctAlert.textContent = "Correct!";
+  }
+  else {
+    correctAlert.textContent = "Incorrect!";
+    removeTime();
+  }
+  correctText.appendChild(correctAlert)
 };
 
 
@@ -129,31 +131,28 @@ function countdownTime() {
     time--;
 
   }, 1000)
+}
 
-
-  //                                    SETTING UP REMOVE TIME FUNCTION
-  function removeTime() {
-    time -= 15;
-  }
-
+//                                    SETTING UP REMOVE TIME FUNCTION
+function removeTime() {
+  timeOnScreen.textContent = "TIME: " + time;
+  time -= 15;
+};
 
   //                                       Enter initals and score here
 
+
+
+
   // Remember JSON converts an Object into a string
-  // Take the value the user enters into the input after game ends
-  let userInitials = document.getElementById('initials-input').value;
 
-  //Example of how to call data from browser API
-  let name = "Yessy";
 
-  //store the item in local storage
-  localStorage.setItem("name", name);
-
-  //retrieve the value we just stored and save to a new variable
-  let gottenFromLocalStorage = localStorage.getItem("name");
-
-  //console.log to retrieve value
-  console.log(gottenFromLocalStorage);
 
   //Open developer tools -> Click on "Application" tab
-};
+
+
+
+    //let score = $("#players-score").innerHTML = "Your Score: " + totalscorefunction
+
+
+
