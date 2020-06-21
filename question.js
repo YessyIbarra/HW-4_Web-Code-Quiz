@@ -1,4 +1,4 @@
-//                Created a variable = Object array with 5 questions, choices and answers here
+//Created a variable = Object array with 5 questions, choices and answers here
 let quizQuestions = [
   {
     question: "Inside which HTML do we put the JavaScript?",
@@ -33,9 +33,7 @@ let quizQuestions = [
 //                                     STARTINGQUIZ FUNCTION HERE
 // This is where we are capturing the element (in HTML file) so we have refrence to this JS file
 let startBtn = document.querySelector("#startButton");
-
-// Adding event listener to have the 'somefunction' run when button is clicked
-startBtn.addEventListener("click", startQuizFunction);
+startBtn.addEventListener("click", startQuizFunction); // Adding event listener to have the 'somefunction' run when button is clicked
 
 //When the start button is clicked this function is executed
 function startQuizFunction() {
@@ -49,12 +47,10 @@ function startQuizFunction() {
 // This is where we are capturing the element (in HTML file) so we have refrence to it in this JS file
 let questionText = document.querySelector("#question-text");
 let optionBox = document.querySelector("#option-box");
-let correctText = document.querySelector("#correct-or-incorrect");
+let correctOrIncorrectDisplayed = document.querySelector("#correct-or-incorrect");
 let questionIndex = 0;
 
-//If you reach the end of the quiz
-//Clear the page
-//Go to the score html
+//If you reach the end of the quiz | Clear the page | Go to score.html -- else 
 function load() {
   if (questionIndex === quizQuestions.length) {
     clearPage();
@@ -66,8 +62,13 @@ function load() {
   }
 };
 
+//                                          FUNCTION TO CLEAR PAGE
+function clearPage() {
+  optionBox.innerHTML = " ";
+  questionText.innerHTML = " ";
+};
 
-//Loop to go through each question option
+//Loop to go through each question and append to HTML to show up on screen
 function createOptions() {
   optionBox.innerHTML = "";
   for (let i = 0; i < quizQuestions[questionIndex].option.length; i++) {
@@ -91,17 +92,10 @@ function nextQuestion() {
   correct(userAnswer == correctAnswer);
   questionIndex++;
   load();
-}
+};
 
 
-//                                          FUNCTION TO CLEAR PAGE
-function clearPage() {
-  optionBox.innerHTML = " ";
-  questionText.innerHTML = " ";
-}
-
-
-//                                      DISPLAY "CORRECT!" FUNCTION HERE
+//                       DISPLAY "CORRECT!" | And "Incorrect!" and removing time FUNCTION HERE 
 //Display 'Correct!' if correct function
 //Display 'Incorrect" if incorrect answer is chosen
 function correct(isCorrect) {
@@ -109,16 +103,35 @@ function correct(isCorrect) {
   let correctAlert = document.createElement("div");
   if (isCorrect) {
     correctAlert.textContent = "Correct!";
+    calcScore();
   }
   else {
     correctAlert.textContent = "Incorrect!";
     removeTime();
+
   }
-  correctText.appendChild(correctAlert)
+  correctOrIncorrectDisplayed.appendChild(correctAlert)
 };
 
+//                             Function to calc score and save to local storage
+//Adding 20 points for each question answered right
+let score = 0;
+let playerScore = document.querySelector("#players-score");
 
-//                                      SETTING UP TIME COUNTDOWN HERE
+
+function calcScore() {
+  score += 20;
+  console.log(score);
+  localStorage.setItem("Your score", score);
+};
+
+function getCalcScore() {
+  let getScore = localStorage.getItem("Your score", score);
+  playerScore.textContent = "Your score: " + getScore;
+
+};
+
+//                                      SETTING UP TIMER COUNTDOWN HERE
 //Set - interval will be used in hw. I need to add a set interval function here
 let timeOnScreen = document.querySelector("#time-on-screen")
 let numberOfQuestions = quizQuestions.length;
@@ -130,7 +143,7 @@ function countdownTime() {
     time--;
 
   }, 1000)
-}
+};
 
 //                                    SETTING UP REMOVE TIME FUNCTION
 function removeTime() {
@@ -139,10 +152,6 @@ function removeTime() {
 };
 
 
-function calcScore() {
-  let score = time / 75;
-  console.log(score)
-}
 
   //                                       Enter initals and score here
 
