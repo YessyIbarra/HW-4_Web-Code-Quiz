@@ -5,7 +5,8 @@ $("#submit-intials-btn").click(function () {
     let initialsInput = document.getElementById("initials-input")
     let initials = initialsInput.value;
     console.log(initials);
-    localStorage.setItem("initals", initials);
+    localStorage.setItem("initials", initials);
+    window.location.href = "highScore.html"
 });
 
 //Grabbing the score from local storage and appending to screen

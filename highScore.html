@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>High Scores</title>
+</head>
+
+<body>
+    <header class="navbar" style="background-color:hsla(0, 71%, 80%, 0.933)">
+        <div class="container">
+            <div class="col-10 mx-auto text-center">
+                <h1>High Scores</h1>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h3 class="p-1 text-center">Thanks for playing</h3>
+    <div class="p-1 text-center" id="high-score"></div>
+</body>
+
+</html>
+
+<script>
+
+    //Grabbing score and initials from local storage and appending to screen
+    let playerHighScore = document.querySelector("#high-score");
+    let getScore = localStorage.getItem("Your score");
+    let getInitials = localStorage.getItem("initials")
+    console.log("getScore: ", getScore);
+    playerHighScore.textContent = getInitials + " scored " + getScore + " points!";
+
+</script>

@@ -1,4 +1,4 @@
-//Created a variable = Object array with 5 questions, choices and answers here
+//Created object with 5 questions, choices and answers here
 let quizQuestions = [
   {
     question: "Inside which HTML do we put the JavaScript?",
@@ -43,22 +43,22 @@ function startQuizFunction() {
   countdownTime();
 }
 
-//                             CREATING QUIZ QUESTIONS & OPTIONS FUNCTION HERE
+//                           CREATING QUIZ QUESTIONS & OPTIONS FUNCTION HERE
 // This is where we are capturing the element (in HTML file) so we have refrence to it in this JS file
 let questionText = document.querySelector("#question-text");
 let optionBox = document.querySelector("#option-box");
 let correctOrIncorrectDisplayed = document.querySelector("#correct-or-incorrect");
 let questionIndex = 0;
 
-//If you reach the end of the quiz | Clear the page | Go to score.html -- else 
+//If you reach the end of the quiz | Clear the page | Go to score.html -- else load nex question & options
 function load() {
   if (questionIndex === quizQuestions.length) {
-    clearPage();
-    window.location.href = "score.html" // RUN FINAL DISPLAY FUNCTION & function that clears out what I had.
+    clearPage(); //this function clears the html I had in the beginning
+    window.location.href = "score.html" // this takes you to the page to insert your initals and see final score
   }
   else {
     questionText.textContent = quizQuestions[questionIndex].question
-    createOptions();
+    createOptions(); //this function loops through the question and options of the given object
   }
 };
 
@@ -68,7 +68,7 @@ function clearPage() {
   questionText.innerHTML = " ";
 };
 
-//Loop to go through each question and append to HTML to show up on screen
+//Loops through all of the options in the array and appends to HTML
 function createOptions() {
   optionBox.innerHTML = "";
   for (let i = 0; i < quizQuestions[questionIndex].option.length; i++) {
@@ -81,39 +81,34 @@ function createOptions() {
   }
 };
 
-//                        EVALUTAE THE USER'S INPUT HERE THEN MOVE ON TO NEXT QUESTION
+//                    FUNCTION TO EVALUTAE THE USER'S INPUT THEN LOADS NEXT QUESTION & ANSWER
 function nextQuestion() {
   let userAnswer = this.getAttribute("data-answer");
   let correctAnswer = quizQuestions[questionIndex].answer
   //console.log(this.getAttribute("data-answer"), quizQuestions[questionIndex].answer) //need to get data attribute from what was clicked and evaluate if it was the right answer or not
-  //questionIndex=1 to go to next index in the object array. 
   correct(userAnswer == correctAnswer);
   questionIndex++;
   load();
 };
 
 //                       DISPLAY "CORRECT!" | And "Incorrect!" and removing time FUNCTION HERE 
-//Display 'Correct!' if correct function
-//Display 'Incorrect" if incorrect answer is chosen
 function correct(isCorrect) {
   console.log(isCorrect)
   let correctAlert = document.createElement("div");
   if (isCorrect) {
-    correctAlert.textContent = "Correct!";
-    calcScore();
+    correctAlert.textContent = "Correct!"; //Display 'Correct!' if correct
+    calcScore(); //Adds 20 points for each correct answer chosen
   }
   else {
-    correctAlert.textContent = "Incorrect!";
-    removeTime();
+    correctAlert.textContent = "Incorrect!"; //Display 'Incorrect" if incorrect
+    removeTime(); //removes 15 seconds for each incorrect answer
 
   }
-  correctOrIncorrectDisplayed.appendChild(correctAlert)
+  correctOrIncorrectDisplayed.appendChild(correctAlert);
 };
 
-//                             Function to calc score and save to local storage
+//                            FUNCTION TO CALCULATE SCORE AND SAVE TO LOCAL STORAGE
 let score = 0;
-//let playerScore = document.querySelector("#players-score");
-
 //Adding 20 points for each question answered right
 function calcScore() {
   score += 20;
@@ -122,7 +117,7 @@ function calcScore() {
 };
 
 //                                      SETTING UP TIMER COUNTDOWN HERE
-let timeOnScreen = document.querySelector("#time-on-screen")
+let timeOnScreen = document.querySelector("#time-on-screen");
 let numberOfQuestions = quizQuestions.length;
 let time = numberOfQuestions * 15;
 
