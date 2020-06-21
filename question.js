@@ -81,8 +81,6 @@ function createOptions() {
   }
 };
 
-
-
 //                        EVALUTAE THE USER'S INPUT HERE THEN MOVE ON TO NEXT QUESTION
 function nextQuestion() {
   let userAnswer = this.getAttribute("data-answer");
@@ -93,7 +91,6 @@ function nextQuestion() {
   questionIndex++;
   load();
 };
-
 
 //                       DISPLAY "CORRECT!" | And "Incorrect!" and removing time FUNCTION HERE 
 //Display 'Correct!' if correct function
@@ -114,25 +111,17 @@ function correct(isCorrect) {
 };
 
 //                             Function to calc score and save to local storage
-//Adding 20 points for each question answered right
 let score = 0;
-let playerScore = document.querySelector("#players-score");
+//let playerScore = document.querySelector("#players-score");
 
-
+//Adding 20 points for each question answered right
 function calcScore() {
   score += 20;
   console.log(score);
   localStorage.setItem("Your score", score);
 };
 
-function getCalcScore() {
-  let getScore = localStorage.getItem("Your score", score);
-  playerScore.textContent = "Your score: " + getScore;
-
-};
-
 //                                      SETTING UP TIMER COUNTDOWN HERE
-//Set - interval will be used in hw. I need to add a set interval function here
 let timeOnScreen = document.querySelector("#time-on-screen")
 let numberOfQuestions = quizQuestions.length;
 let time = numberOfQuestions * 15;
@@ -150,23 +139,4 @@ function removeTime() {
   timeOnScreen.textContent = "TIME: " + time;
   time -= 15;
 };
-
-
-
-  //                                       Enter initals and score here
-
-
-
-
-  // Remember JSON converts an Object into a string
-
-
-
-  //Open developer tools -> Click on "Application" tab
-
-
-
-    //let score = $("#players-score").innerHTML = "Your Score: " + totalscorefunction
-
-
 
